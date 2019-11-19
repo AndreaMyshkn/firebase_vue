@@ -56,6 +56,14 @@ export default new Vuex.Store({
       .then(()=>{
         router.push({name:'init'})
       })
+    }, 
+    addPhrase({commit}, newPhrase){
+      db.collection('phrases').add({
+        phrase:newPhrase
+      })
+      .then(()=>{
+        router.push({name:'init'})
+      })
     }
   },
   modules: {

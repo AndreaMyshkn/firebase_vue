@@ -4,7 +4,7 @@
      {{id}}{{phrase}}
      <form @submit.prevent="editPhrase(phrase)">
          <input type="text" v-model='phrase.phrase'>
-         <button>Edit</button>
+         <button type="submit">Edit</button>
      </form>
    </div>
 </template>
