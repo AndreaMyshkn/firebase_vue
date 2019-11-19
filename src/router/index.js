@@ -9,7 +9,19 @@ const routes = [
     path: '/',
     name: 'init',
   
-    component: () => import(/* webpackChunkName: "about" */ '../views/Init.vue')
+    component: () => import(/* webpackChunkName: "init" */ '../views/Init.vue')
+  },
+  {
+    path: '/edit/:id',
+    name: 'edit',
+  
+    component: () => import(/* webpackChunkName: "edit" */ '../views/Edit.vue')
+  }, 
+  {
+    path: '/add',
+    name: 'add',
+  
+    component: () => import(/* webpackChunkName: "edit" */ '../views/Add.vue')
   }
 ]
 

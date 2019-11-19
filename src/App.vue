@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img src='./assets/logo.png'/>
+     <router-link :to="{name:'init'}">    <img src='./assets/logo.png'/></router-link>
+    <router-link :to="{name:'add'}">Add phrase</router-link>
     <router-view/>
   </div>
 </template>

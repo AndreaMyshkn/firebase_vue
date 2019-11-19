@@ -4,10 +4,13 @@
        <ul >
           <li v-for="phrase of phrases" :key="phrase.id">
                  {{phrase.phrase}}
+                  <router-link :to="{name:'edit', params:{id:phrase.id}}">
+            <button>Edit text </button>
+        </router-link>
           </li>
 
        </ul>
-
+       
    </div>   
 
 </template>

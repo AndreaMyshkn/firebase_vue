@@ -1,17 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import router from '../router'
 import db from '../firebase';
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    phrases:[]
+    phrases:[], 
+    phrase:{ phrase:'', id:'' }
   },
   mutations: {
     setPhrases(state, allPhrases){
       state.phrases = allPhrases;
+    }, 
+    setPhraseSelected(state, phraseSelected){
+      state.phrase = phraseSelected;
     }
-
 
 
   },
@@ -32,6 +36,26 @@ export default new Vuex.Store({
       })
 
       commit('setPhrases', allPhrases)
+    },
+
+    getPhrase({commit}, id){
+      db.collection('phrases').doc(id).get()
+      .then(doc=>{
+         let phraseSelected = doc.data();
+         phraseSelected.id = doc.id;
+         console.log(phraseSelected)
+         commit('setPhraseSelected', phraseSelected)
+      })
+     
+    }, 
+
+    editPhrase({commit}, phrase){
+      db.collection('phrases').doc(phrase.id).update({
+        phrase: phrase.phrase
+      })
+      .then(()=>{
+        router.push({name:'init'})
+      })
     }
   },
   modules: {
